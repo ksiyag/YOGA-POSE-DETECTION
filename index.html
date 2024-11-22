@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pose Detection with Snapshot</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/posenet"></script>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #eaeaea;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        #overlay {
+            position: relative;
+            width: 640px;
+            height: 480px;
+            border: 2px solid #333;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        video {
+            display: none; /* Hide the video element */
+        }
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+        #controls {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin: 5px 0;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #pose-info {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 10px;
+            color: #333;
+        }
+        #current-pose {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 10px;
+            color: #4CAF50; /* Green color for current pose */
+        }
+        #accuracy {
+            color: #4CAF50; /* Green color for accuracy text */
+        }
+    </style>
+</head>
+<body>
+    <h1>Pose Detection with Snapshot</h1>
+    <div id="overlay">
+        <video id="video" playsinline autoplay></video>
+        <canvas id="canvas" width="640" height="480"></canvas>
+    </div>
+    <div id="controls">
+        <button id="capture">Capture Snapshot</button>
+    </div>
+    <div id="pose-info">Pose Accuracy: <span id="accuracy">N/A</span></div>
+    <div id="current-pose">Current Pose: <span id="pose-name">N/A</span></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
